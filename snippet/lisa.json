@@ -1,0 +1,62 @@
+{
+    "cond": {
+        "prefix": "cond",
+        "body": "(cond (${1:predicate1} ${2:consequent1})\n\t(${3:predicate2} ${4:consequent2}))",
+        "description": "Code snippet for condition statement",
+        "scope": "source.lisa"
+    },
+    "define": {
+        "prefix": "define",
+        "body": "(define ${1:name} ${2:value})",
+        "description": "Code snippet for define statement",
+        "scope": "source.lisa"
+    },
+    "def": {
+        "prefix": "def",
+        "body": "(define (${1:name} ${2:parameters})\n\t${3:body})",
+        "description": "Code snippet for defining a procedure.",
+        "scope": "source.lisa"
+    },
+    "if": {
+        "prefix": "if",
+        "body": "(if (${1:predicate})\n\t${2:consequent}\n\t${3:alternative})",
+        "description": "Code snippet for an if statement",
+        "scope": "source.lisa"
+    },
+    "lambda": {
+        "prefix": "lambda",
+        "body": "(lambda ($1) ${2:body})",
+        "description": "Code snippet for lambda expression",
+        "scope": "source.lisa"
+    },
+    "let": {
+        "prefix": "let",
+        "body": "(let (${1:variables})\n\t($0))",
+        "description": "Code snippet for let statement",
+        "scope": "source.lisa"
+    },
+    "let1": {
+        "prefix": "let1",
+        "body": "(let ((${1:variable} ${2:value}))\n\t($0))",
+        "description": "Code snippet for let1 statement",
+        "scope": "source.lisa"
+    },
+    "macro": {
+        "prefix": "macro",
+        "body": "(define-macro (${1:name} ${2:parameters})\n\t${3:body})",
+        "description": "Code snippet for defining a macro.",
+        "scope": "source.lisa"
+    },
+    "set!": {
+        "prefix": "set!",
+        "body": "(set! ${1:place} ${2:value})",
+        "description": "Code snippet for set! statement",
+        "scope": "source.lisa"
+    },
+    "quick-lambda": {
+        "prefix": "quicklambda",
+        "body": "&($0)",
+        "description": "Code snippet for lambda expression literal.",
+        "scope": "source.lisa"
+    }
+}

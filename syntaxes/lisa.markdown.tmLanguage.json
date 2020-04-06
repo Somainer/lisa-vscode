@@ -1,0 +1,22 @@
+{
+    "fileTypes": [],
+    "injectionSelector": "L:text.html.markdown",
+    "patterns": [
+        {
+            "include": "#fenced_code_block_lisa"
+        }
+    ],
+    "repository": {
+        "fenced_code_block_lisa": {
+            "begin": "(^|\\G)(\\s*)(`{3,}|~{3,})\\s*(?i:(lisa)(\\s+[^`~]*)?$)",
+            "end": "(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$",
+            "contentName": "meta.embedded.block.lisa",
+            "patterns": [
+                {
+                    "include": "source.lisa"
+                }
+            ]
+        }
+    },
+    "scopeName": "markdown.lisa.codeblock"
+}

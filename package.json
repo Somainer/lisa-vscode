@@ -1,0 +1,61 @@
+{
+    "name": "lisa-vscode",
+    "displayName": "Lisa Lang",
+    "description": "Syntax for Lisa Language",
+    "publisher": "Somainer",
+    "icon": "icons/LisaImai.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/somainer/lisa-vscode.git"
+    },
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.43.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "lisa",
+                "aliases": [
+                    "Lisa Lang",
+                    "lisa"
+                ],
+                "extensions": [
+                    ".lisa"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "lisa",
+                "scopeName": "source.lisa",
+                "path": "./syntaxes/lisa.tmLanguage.json"
+            },
+            {
+                "scopeName": "markdown.lisa.codeblock",
+                "path": "./syntaxes/lisa.markdown.tmLanguage.json",
+                "injectTo": [
+                    "text.html.markdown"
+                ]
+            }
+        ],
+        "snippets": [
+            {
+                "language": "lisa",
+                "path": "./snippet/lisa.json"
+            }
+        ],
+        "iconThemes": [
+            {
+                "id": "lisa",
+                "label": "Lisa",
+                "path": "./lisa-icon-theme.json"
+            }
+        ]
+    }
+}

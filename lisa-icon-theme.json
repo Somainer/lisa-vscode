@@ -1,0 +1,10 @@
+{
+    "iconDefinitions": {
+        "_lisa_icon": {
+            "iconPath": "./icons/LisaImai.png"
+        }
+    },
+    "languageIds": {
+        "lisa": "_lisa_icon"
+    }
+}
