@@ -9,10 +9,10 @@
             "include": "#comment-lines"
         },
         {
-            "include": "#expression"
+            "include": "#shebang"
         },
         {
-            "include": "#shebang"
+            "include": "#expression"
         }
     ],
     "repository": {
@@ -24,6 +24,12 @@
                     "name": "punctuation.definition.comment.lisa"
               }
            }
+       },
+       "statements": {
+           "patterns": [
+               { "include": "#comment-lines" },
+               { "include": "#expression" }
+           ]
        },
        "expression": {
            "patterns": [
@@ -169,7 +175,7 @@
                             "name": "punctuation.definition.template-expression.begin.lisa"
                         }
                     },
-                    "end": "\\}",
+                    "end": "}",
                     "endCaptures": {
                         "0": {
                             "name": "punctuation.definition.template-expression.end.lisa"
@@ -177,10 +183,12 @@
                     },
                     "patterns": [
                         {
+                            "include": "#symbols"
+                        },
+                        {
                             "include": "#expression"
                         }
-                    ],
-                    "contentName": "meta.embedded.line.js"
+                    ]
                 },
                 {
                     "name": "meta.template.expression.lisa",
@@ -272,6 +280,12 @@
             ]
         },
         "comment-lines": {
+            "patterns": [
+                { "include": "#document-line-comment" },
+                { "include": "#one-line-comment" }
+            ]
+        },
+        "one-line-comment": {
             "name": "comment.line.lisa",
             "begin": ";",
             "end": "$",
@@ -281,6 +295,11 @@
                     "match": "\\\\."
                 }
             ]
+        },
+        "document-line-comment": {
+            "name": "comment.block.documentation.lisa",
+            "begin": ";;",
+            "end": "$"
         },
         "quoted": {
             "begin": "([']\\()",
@@ -356,7 +375,7 @@
                     },
                     "end": "(?=\\))",
                     "patterns": [
-                        { "include": "#expression" }
+                        { "include": "#statements" }
                     ]
                 },
                 {
@@ -370,7 +389,7 @@
                     "name": "meta.definition.global.lisa",
                     "patterns": [
                         {
-                            "include": "#expression"
+                            "include": "#statements"
                         }
                     ]
                 },
