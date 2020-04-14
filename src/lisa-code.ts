@@ -1,4 +1,5 @@
 import * as vscode from 'vscode'
+import * as os from 'os'
 
 
 export class LisaCode implements vscode.Disposable {
@@ -6,7 +7,17 @@ export class LisaCode implements vscode.Disposable {
     private config: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration('lisa-vscode')
 
     private get lisaCommand() {
-        return this.config.get<string>('interpreterCommand') || 'lisa'
+        const command = this.config.get<string>('interpreterCommand') || 'lisa'
+        const platform = os.platform()
+        if (platform === 'darwin') {
+            return `"${command}"`
+        }
+        if (platform === 'win32') {
+            if (parseFloat(os.release()) >= 10) {
+                return `&'${command}'`
+            }
+        }
+        return command;
     }
 
     private get terminal() {
@@ -35,7 +46,7 @@ export class LisaCode implements vscode.Disposable {
             vscode.window.showErrorMessage(`File ${document.fileName} is not saved successfully.`)
             return
         }
-        const command = `"${this.lisaCommand}" ${withRepl ? 'repl' : ''} "${document.fileName}"`;
+        const command = `${this.lisaCommand} ${withRepl ? 'repl' : ''} "${document.fileName}"`;
         return this.runCommand(command)
     }
 
