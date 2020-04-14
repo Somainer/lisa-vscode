@@ -29,3 +29,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+out
+node_modules
+.vscode-test/
+*.vsix

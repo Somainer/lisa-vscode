@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/somainer/lisa-vscode.git"
     },
-    "version": "0.0.2",
+    "version": "0.0.3",
     "engines": {
         "vscode": "^1.43.0"
     },
@@ -16,6 +16,18 @@
         "Programming Languages",
         "Snippets"
     ],
+    "main": "./out/extension.js",
+    "activationEvents": [
+        "onLanguage:lisa",
+        "onCommand:lisa-vscode.startREPL",
+        "onCommand:lisa-vscode.execInTerminal"
+    ],
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "lint": "tslint -p ./",
+        "watch": "tsc -watch -p ./"
+    },
     "contributes": {
         "languages": [
             {
@@ -56,6 +68,53 @@
                 "label": "Lisa",
                 "path": "./lisa-icon-theme.json"
             }
-        ]
+        ],
+        "commands": [
+            {
+                "command": "lisa-vscode.startREPL",
+                "title": "Start the Lisa REPL",
+                "category": "Lisa"
+            },
+            {
+                "command": "lisa-vscode.execInTerminal",
+                "title": "Run the current file in Terminal",
+                "category": "Lisa",
+                "icon": {
+                    "dark": "./icons/Lisa-Run.png",
+                    "light": "./icons/Lisa-Run.png"
+                }
+            },
+            {
+                "command": "lisa-vscode.execInTerminalWithRepl",
+                "title": "Run the current file in Terminal with REPL coverage",
+                "category": "Lisa"
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "when": "resourceLangId == lisa",
+                    "command": "lisa-vscode.execInTerminal",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "configuration": {
+            "type": "object",
+            "title": "Lisa-VSCode configuration",
+            "properties": {
+                "lisa-vscode.interpreterCommand": {
+                    "type": "string",
+                    "default": "lisa",
+                    "description": "The Lisa Interpreter Command",
+                    "scope": "resource"
+                }
+            }
+        }
+    },
+    "devDependencies": {
+        "@types/node": "^13.11.1",
+        "typescript": "^3.8.3",
+        "vscode": "^1.1.36"
     }
 }

@@ -10,3 +10,8 @@ All notable changes to the "lisa" extension will be documented in this file.
 
 - Bug fix
 - Change icon with a better resolution.
+
+## [0.0.3]
+
+- Add Run Commands
+- Add execute button
