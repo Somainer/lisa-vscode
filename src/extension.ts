@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 import { LisaCode } from './lisa-code'
 
 export async function activate(ctx: vscode.ExtensionContext) {
-    vscode.window.showInformationMessage('Lisa-VSCode activated.')
+    // vscode.window.showInformationMessage('Lisa-VSCode activated.')
     const lisaCode = new LisaCode()
     vscode.window.onDidCloseTerminal((terminal) => {
         lisaCode.disposeTerminal(terminal)

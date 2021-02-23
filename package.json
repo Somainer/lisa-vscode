@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/somainer/lisa-vscode.git"
     },
-    "version": "0.0.3",
+    "version": "0.0.4",
     "engines": {
         "vscode": "^1.43.0"
     },
@@ -109,6 +109,12 @@
                     "description": "The Lisa Interpreter Command",
                     "scope": "resource"
                 }
+            }
+        },
+        "configurationDefaults": {
+            "[lisa]": {
+                "editor.tabSize": 2,
+                "editor.insertSpaces": true
             }
         }
     },

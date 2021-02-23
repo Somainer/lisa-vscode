@@ -58,6 +58,6 @@ export class LisaCode implements vscode.Disposable {
     }
 
     public dispose() {
-        throw new Error("Method not implemented.");
+        this._terminal?.dispose();
     }
 }
