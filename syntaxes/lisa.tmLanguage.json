@@ -48,7 +48,6 @@
                { "include": "#atoms" },
                { "include": "#strings" },
                { "include": "#boolean-literals" },
-               { "include": "#dot-accessors" },
                { "include": "#numbers" },
                { "include": "#static-field-accessors" },
                { "include": "#quoted" }
@@ -56,6 +55,8 @@
        },
        "symbolic-literals": {
            "patterns": [
+               { "include": "#splicing-symbol" },
+               { "include": "#dot-accessors" },
                { "include": "#symbols" },
                { "include": "#positional-args" }
            ]
@@ -108,6 +109,17 @@
                }
            ]
        },
+       "splicing-symbol": {
+           "match": "(\\.\\.\\.)",
+           "captures": {
+               "1": {
+                   "name": "entity.name.selectors.lisa"
+               }
+           },
+           "patterns": [
+               { "include": "#symbols" }
+           ]
+       },
        "symbols": {
            "patterns": [
                {
@@ -117,7 +129,10 @@
                {
                    "name": "variable.name.lisa",
                     "begin": "`",
-                    "end": "`"
+                    "end": "`",
+                    "patterns": [
+                        { "include": "$self" }
+                    ]
                }
            ]
        },
@@ -302,7 +317,7 @@
             "end": "$"
         },
         "quoted": {
-            "begin": "([']\\()",
+            "begin": "(('|`')\\()",
             "beginCaptures": {
                 "1": {
                     "name": "punctuation.section.expression.begin.lisa"
